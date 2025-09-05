@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BackendContratos")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3987d6f607576fd181bc5b0fe09116aa79dca34d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd7f9d706b6994dae9c0f5c593592bc5d4bf9510")]
 [assembly: System.Reflection.AssemblyProductAttribute("BackendContratos")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BackendContratos")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

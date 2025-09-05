@@ -4,3 +4,34 @@ GET {{BackendContratos_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+POST {{BackendContratos_HostAddress}}/api/auth/register
+Content-Type: application/json
+{
+  "nombre": "Daniel",
+  "email": "daniel@correo.com",
+  "passwordHash": "12345",
+  "role": "Admin"
+}
+
+###
+POST {{BackendContratos_HostAddress}}/api/auth/login
+Content-Type: application/json
+{
+  "email": "daniel@correo.com",
+  "passwordHash": "12345"
+}
+
+
+###
+GET {{BackendContratos_HostAddress}}/api/proveedor
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###
+POST {{BackendContratos_HostAddress}}/api/proveedor
+Content-Type: application/json
+{
+  "nit": "123456789",
+  "nombre": "Proveedor de prueba",
+  "representanteLegal": "Daniel Prasca"
+}
