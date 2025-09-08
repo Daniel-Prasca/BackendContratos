@@ -1,9 +1,8 @@
-﻿using BackendContratos.Data;
-using BackendContratos.Dtos;
-using BackendContratos.Models;
+﻿using BackendContratos.Dtos;
+using BackendContratos.DTOs;
+using BackendContratos.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BackendContratos.Controllers
 {
@@ -12,95 +11,51 @@ namespace BackendContratos.Controllers
     [Authorize]
     public class PolizasController : ControllerBase
     {
-        private readonly BackendContratoDbContext _context;
-        public PolizasController(BackendContratoDbContext context) => _context = context;
+        private readonly PolizasService _polizasService;
+
+        public PolizasController(PolizasService polizasService)
+        {
+            _polizasService = polizasService;
+        }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PolizaDto>>> GetPolizas()
+        public async Task<ActionResult<IEnumerable<PolizaDto>>> GetAll()
         {
-            return await _context.Polizas
-                .Select(p => new PolizaDto
-                {
-                    Id = p.Id,
-                    ContratoId = p.ContratoId,
-                    Tipo = p.Tipo,
-                    FechaVencimiento = p.FechaVencimiento,
-                    Estado = p.Estado
-                }).ToListAsync();
+            return Ok(await _polizasService.GetAllAsync());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<PolizaDto>> GetPoliza(int id)
+        public async Task<ActionResult> GetById(int id)
         {
-            var poliza = await _context.Polizas.FindAsync(id);
-            if (poliza == null)
-            {
-                return NotFound("Póliza no encontrada.");
-            }
-            var dto = new PolizaDto
-            {
-                Id = poliza.Id,
-                ContratoId = poliza.ContratoId,
-                Tipo = poliza.Tipo,
-                FechaVencimiento = poliza.FechaVencimiento,
-                Estado = poliza.Estado
-            };
-            return dto;
+            var poliza = await _polizasService.GetByIdAsync(id);
+            if (poliza == null) return NotFound(new { message = "Póliza no encontrada" });
+            return Ok(poliza);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<PolizaDto>> PostPoliza(PolizaDto dto)
+        public async Task<ActionResult<PolizaDto>> Create(PolizaCreateDto dto)
         {
-            if (!await _context.Contratos.AnyAsync(c => c.Id == dto.ContratoId))
-            {
-                return BadRequest("Contrato inválido.");
-            }
-
-            var poliza = new Poliza
-            {
-                ContratoId = dto.ContratoId,
-                Tipo = dto.Tipo,
-                FechaVencimiento = dto.FechaVencimiento,
-                Estado = dto.Estado
-            };
-
-            _context.Polizas.Add(poliza);
-            await _context.SaveChangesAsync();
-
-            dto.Id = poliza.Id;
-            return CreatedAtAction(nameof(GetPolizas), new { id = dto.Id }, dto);
+            var poliza = await _polizasService.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id = poliza.Id }, poliza);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> PutPoliza(int id, PolizaDto dto)
+        public async Task<IActionResult> Update(int id, PolizaUpdateDto dto)
         {
-            var poliza = await _context.Polizas.FindAsync(id);
-            if (poliza == null)
-            {
-                return NotFound("Póliza no encontrada.");
-            }
-            
-            poliza.ContratoId = dto.ContratoId;
-            poliza.Tipo = dto.Tipo;
-            poliza.FechaVencimiento = dto.FechaVencimiento;
-            poliza.Estado = dto.Estado;
-            await _context.SaveChangesAsync();
-            return Ok(new { message = "Poliza actualizada correctamente" });
+            var updated = await _polizasService.UpdateAsync(id, dto);
+            if (!updated) return NotFound();
+            return Ok(new { message = "Póliza actualizada correctamente" });
         }
-        [HttpDelete("{id}")]
+
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> DeletePoliza(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            var poliza = await _context.Polizas.FindAsync(id);
-            if (poliza == null)
-            {
-                return NotFound("Póliza no encontrada.");
-            }
-            _context.Polizas.Remove(poliza);
-            await _context.SaveChangesAsync();
-            return Ok(new { message = "Poliza eliminada correctamente" });
+            var deleted = await _polizasService.DeleteAsync(id);
+            if (!deleted) return NotFound();
+            return Ok(new { message = "Póliza eliminada correctamente" });
         }
     }
 }

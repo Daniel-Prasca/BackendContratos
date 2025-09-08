@@ -1,120 +1,60 @@
-﻿using BackendContratos.Data;
-using BackendContratos.DTOs;
-using BackendContratos.Models;
+﻿using BackendContratos.DTOs;
+using BackendContratos.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BackendContratos.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     [Authorize]
     public class ServiciosController : ControllerBase
     {
-        private readonly BackendContratoDbContext _context;
+        private readonly ServiciosService _serviciosService;
 
-        public ServiciosController(BackendContratoDbContext context)
+        public ServiciosController(ServiciosService serviciosService)
         {
-            _context = context;
+            _serviciosService = serviciosService;
         }
 
-        // GET: api/Servicios
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ServicioDto>>> GetServicios()
+        public async Task<ActionResult<IEnumerable<ServicioDto>>> GetAll()
         {
-            var servicios = await _context.Servicios
-                .Select(s => new ServicioDto
-                {
-                    Id = s.Id,
-                    Nombre = s.Nombre,
-                    Precio = s.Precio,
-                    //Cantidad = s.cantidad,
-                })
-                .ToListAsync();
-
-            return Ok(servicios);
+            return Ok(await _serviciosService.GetAllAsync());
         }
 
-        // GET: api/Servicios/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ServicioDto>> GetServicio(int id)
+        public async Task<ActionResult> GetById(int id)
         {
-            var servicio = await _context.Servicios
-                .Where(s => s.Id == id)
-                .Select(s => new ServicioDto
-                {
-                    Id = s.Id,
-                    Nombre = s.Nombre,
-                    Precio = s.Precio,
-                    Cantidad = s.cantidad,
-                })
-                .FirstOrDefaultAsync();
-
-            if (servicio == null)
-                return NotFound();
-
+            var servicio = await _serviciosService.GetByIdAsync(id);
+            if (servicio == null) return NotFound(new { message = "Servicio no encontrado" });
             return Ok(servicio);
         }
 
-        // POST: api/Servicios
+        [Authorize(Roles = "Admin, User")]
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<ServicioDto>> PostServicio(ServicioDto servicioDto)
+        public async Task<ActionResult<ServicioDto>> Create(ServicioCreateDto dto)
         {
-            // Verificar que exista el contrato
-            var contrato = await _context.Contratos.FindAsync(servicioDto.ContratoId);
-            if (contrato == null)
-                return BadRequest("El contrato especificado no existe.");
-
-            var servicio = new Servicio
-            {
-                Nombre = servicioDto.Nombre,
-                Precio = servicioDto.Precio,
-                cantidad = servicioDto.Cantidad,
-                ContratoId = servicioDto.ContratoId
-            };
-
-            _context.Servicios.Add(servicio);
-            await _context.SaveChangesAsync();
-
-            servicioDto.Id = servicio.Id;
-            return CreatedAtAction(nameof(GetServicio), new { id = servicio.Id }, servicioDto);
+            var servicio = await _serviciosService.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id = servicio.Id }, servicio);
         }
 
-
-        // PUT: api/Servicios/5
+        [Authorize(Roles = "Admin, User")]
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> PutServicio(int id, ServicioDto servicioDto)
+        public async Task<IActionResult> Update(int id, ServicioUpdateDto dto)
         {
-            if (id != servicioDto.Id)
-                return BadRequest();
-
-            var servicio = await _context.Servicios.FindAsync(id);
-            if (servicio == null)
-                return NotFound();
-
-            servicio.Nombre = servicioDto.Nombre;
-            servicio.Precio = servicioDto.Precio;
-
-            await _context.SaveChangesAsync();
-            return NoContent();
+            var updated = await _serviciosService.UpdateAsync(id, dto);
+            if (!updated) return NotFound();
+            return Ok(new { message = "Servicio actualizado correctamente" });
         }
 
-        // DELETE: api/Servicios/5
+        [Authorize(Roles = "Admin, User")]
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> DeleteServicio(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var servicio = await _context.Servicios.FindAsync(id);
-            if (servicio == null)
-                return NotFound();
-
-            _context.Servicios.Remove(servicio);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            var deleted = await _serviciosService.DeleteAsync(id);
+            if (!deleted) return NotFound();
+            return Ok(new { message = "Servicio eliminado correctamente" });
         }
     }
 }

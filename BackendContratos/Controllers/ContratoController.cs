@@ -1,111 +1,65 @@
-﻿using BackendContratos.Data;
-using BackendContratos.Dtos;
-using BackendContratos.Models;
+﻿using BackendContratos.Dtos;
+using BackendContratos.DTOs;
+using BackendContratos.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BackendContratos.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize] // 👈 todos requieren autenticación
+    [Authorize]
     public class ContratosController : ControllerBase
     {
-        private readonly BackendContratoDbContext _context;
+        private readonly ContratosService _contratosService;
 
-        public ContratosController(BackendContratoDbContext context)
+        public ContratosController(ContratosService contratosService)
         {
-            _context = context;
+            _contratosService = contratosService;
         }
 
-        // GET api/contratos
         [HttpGet]
-        public async Task<IActionResult> GetContratos()
+        public async Task<ActionResult<IEnumerable<ContratoDto>>> GetAll()
         {
-            var contratos = await _context.Contratos
-                .Include(c => c.Proveedor)
-                .Select(c => new ContratoDto
-                {
-                    Id = c.Id,
-                    Objeto = c.Objeto,
-                    FechaInicio = c.FechaInicio,
-                    FechaFin = c.FechaFin,
-                    ProveedorNombre = c.Proveedor.Nombre
-                })
-                .ToListAsync();
-
-            return Ok(contratos);
+            return Ok(await _contratosService.GetAllAsync());
         }
 
-        // GET api/contratos/{id}
+       
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetContrato(int id)
+        public async Task<ActionResult> GetById(int id)
         {
-            var contrato = await _context.Contratos
-                .Include(c => c.Proveedor)
-                .FirstOrDefaultAsync(c => c.Id == id);
-
-            if (contrato == null)
-                return NotFound();
-
-            var dto = new ContratoDto
-            {
-                Id = contrato.Id,
-                Objeto = contrato.Objeto,
-                FechaInicio = contrato.FechaInicio,
-                FechaFin = contrato.FechaFin,
-                ProveedorNombre = contrato.Proveedor.Nombre
-            };
-
-            return Ok(dto);
+            var contrato = await _contratosService.GetByIdAsync(id);
+            if (contrato == null) return NotFound(new {mesagge = "Contrato no encontrado"});
+            return Ok(contrato);
         }
 
-        // POST api/contratos
+        // Crear (sólo Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        [Authorize(Roles = "Admin")] // solo Admin puede crear
-        public async Task<IActionResult> CreateContrato([FromBody] Contrato contrato)
+        public async Task<ActionResult<ContratoDto>> Create(ContratoCreateDto dto)
         {
-            _context.Contratos.Add(contrato);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { message = "Contrato creado exitosamente" });
+            var contrato = await _contratosService.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id = contrato.Id }, contrato);
         }
 
-        // PUT api/contratos/{id}
+        //Actualizar (sólo Admin)
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")] // solo Admin puede editar
-        public async Task<IActionResult> UpdateContrato(int id, [FromBody] Contrato contratoRequest)
+        public async Task<IActionResult> Update(int id, ContratoUpdateDto dto)
         {
-            var contrato = await _context.Contratos.FindAsync(id);
-
-            if (contrato == null)
-                return NotFound();
-
-            contrato.Objeto = contratoRequest.Objeto;
-            contrato.FechaInicio = contratoRequest.FechaInicio;
-            contrato.FechaFin = contratoRequest.FechaFin;
-            contrato.ProveedorId = contratoRequest.ProveedorId;
-
-            await _context.SaveChangesAsync();
-
-            return Ok(new { message = "Contrato actualizado exitosamente" });
+            var updated = await _contratosService.UpdateAsync(id, dto);
+            if (!updated) return NotFound();
+            return Ok(new {mensagge = "Contrato actualizado correctamente"});
         }
 
-        // DELETE api/contratos/{id}
+        //Eliminar (sólo Admin)
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")] // solo Admin puede eliminar
-        public async Task<IActionResult> DeleteContrato(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var contrato = await _context.Contratos.FindAsync(id);
-
-            if (contrato == null)
-                return NotFound();
-
-            _context.Contratos.Remove(contrato);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { message = "Contrato eliminado exitosamente" });
+            var deleted = await _contratosService.DeleteAsync(id);
+            if (!deleted) return NotFound();
+            return Ok(new { mensagge = "Contrato eliminado correctamente" });
         }
     }
 }

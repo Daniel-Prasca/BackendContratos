@@ -9,7 +9,7 @@ Content-Type: application/json
 {
   "nombre": "Daniel",
   "email": "daniel@correo.com",
-  "passwordHash": "12345",
+  "password": "12345",
   "role": "Admin"
 }
 
@@ -18,7 +18,7 @@ POST {{BackendContratos_HostAddress}}/api/auth/login
 Content-Type: application/json
 {
   "email": "daniel@correo.com",
-  "passwordHash": "12345"
+  "password": "12345"
 }
 
 

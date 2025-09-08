@@ -6,5 +6,21 @@
         public string? Nit { get; set; }
         public string? Nombre { get; set; }
         public string? RepresentanteLegal { get; set; }
+
+        
     }
+    public class ProveedorCreateDto
+    {
+        public string Nit { get; set; }
+        public string Nombre { get; set; }
+        public string RepresentanteLegal { get; set; }
+    }
+    public class ProveedorUpdateDto
+    {
+        public string Nit { get; set; }
+        public string Nombre { get; set; }
+        public string RepresentanteLegal { get; set; }
+    }
+
+
 }

@@ -1,30 +1,59 @@
-﻿using BackendContratos.Data;
-using BackendContratos.Dtos;
+﻿using BackendContratos.Dtos;
+using BackendContratos.DTOs;
+using BackendContratos.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BackendContratos.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "Admin")] // solo admin gestiona usuarios
     public class UsersController : ControllerBase
     {
-        private readonly BackendContratoDbContext _context;
-        public UsersController(BackendContratoDbContext context) => _context = context;
+        private readonly UsersService _usersService;
+
+        public UsersController(UsersService usersService)
+        {
+            _usersService = usersService;
+        }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetAll()
         {
-            return await _context.Users
-                .Select(u => new UserDto
-                {
-                    Id = u.Id,
-                    Nombre = u.Nombre,
-                    Email = u.Email,
-                    Role = u.Role
-                }).ToListAsync();
+            return Ok(await _usersService.GetAllAsync());
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetById(int id)
+        {
+            var user = await _usersService.GetByIdAsync(id);
+            if (user == null) return NotFound(new { message = "Usuario no encontrado" });
+            return Ok(user);
+        }
+
+        [HttpPost("register")]
+        [AllowAnonymous] // abierto para registro
+        public async Task<ActionResult<UserDto>> Register(UserRegisterDto dto)
+        {
+            var user = await _usersService.RegisterAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, UserUpdateDto dto)
+        {
+            var updated = await _usersService.UpdateAsync(id, dto);
+            if (!updated) return NotFound();
+            return Ok(new { message = "Usuario actualizado correctamente" });
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var deleted = await _usersService.DeleteAsync(id);
+            if (!deleted) return NotFound();
+            return Ok(new { message = "Usuario eliminado correctamente" });
         }
     }
 }

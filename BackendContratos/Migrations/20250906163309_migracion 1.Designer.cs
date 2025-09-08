@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackendContratos.Migrations
 {
     [DbContext(typeof(BackendContratoDbContext))]
-    [Migration("20250905180826_migration 1")]
-    partial class migration1
+    [Migration("20250906163309_migracion 1")]
+    partial class migracion1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -207,6 +207,9 @@ namespace BackendContratos.Migrations
                     b.Property<decimal>("Precio")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("cantidad")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

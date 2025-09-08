@@ -8,4 +8,21 @@
         public DateTime FechaVencimiento { get; set; }
         public string Estado { get; set; } = string.Empty;
     }
+
+    public class PolizaCreateDto
+    {
+        public int ContratoId { get; set; }
+        public string Tipo { get; set; } = string.Empty;
+        public DateTime FechaVencimiento { get; set; }
+        public string Estado { get; set; } = string.Empty;
+
+    }
+
+    public class PolizaUpdateDto
+    {
+        public string Tipo { get; set; } = string.Empty;
+        public DateTime FechaVencimiento { get; set; }
+        public string Estado { get; set; } = string.Empty;
+
+    }
 }

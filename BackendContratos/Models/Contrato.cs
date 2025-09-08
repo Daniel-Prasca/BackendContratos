@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public int ProveedorId { get; set; }
-        public Proveedor? Proveedor { get; set; }
+        public Proveedor Proveedor { get; set; }
 
         public string Objeto { get; set; } = string.Empty;
         public DateTime FechaInicio { get; set; }

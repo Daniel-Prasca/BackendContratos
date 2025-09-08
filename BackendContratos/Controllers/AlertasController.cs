@@ -1,9 +1,8 @@
-﻿using BackendContratos.Data;
-using BackendContratos.Dtos;
-using BackendContratos.Models;
+﻿using BackendContratos.Dtos;
+using BackendContratos.DTOs;
+using BackendContratos.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BackendContratos.Controllers
 {
@@ -12,64 +11,51 @@ namespace BackendContratos.Controllers
     [Authorize]
     public class AlertasController : ControllerBase
     {
-        private readonly BackendContratoDbContext _context;
-        public AlertasController(BackendContratoDbContext context) => _context = context;
+        private readonly AlertasService _alertasService;
+
+        public AlertasController(AlertasService alertasService)
+        {
+            _alertasService = alertasService;
+        }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AlertaDto>>> GetAlertas()
+        public async Task<ActionResult<IEnumerable<AlertaDto>>> GetAll()
         {
-            return await _context.Alertas
-                .Select(a => new AlertaDto
-                {
-                    Id = a.Id,
-                    Tipo = a.Tipo,
-                    Mensaje = a.Mensaje,
-                    Fecha = a.Fecha,
-                    ContratoId = a.ContratoId,
-                    PolizaId = a.PolizaId
-                }).ToListAsync();
+            return Ok(await _alertasService.GetAllAsync());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<AlertaDto>> GetAlerta(int id)
+        public async Task<ActionResult> GetById(int id)
         {
-            var alerta = await _context.Alertas.FindAsync(id);
-            if (alerta == null)
-            {
-                return NotFound("Alerta no encontrada.");
-            }
-            var dto = new AlertaDto
-            {
-                Id = alerta.Id,
-                Tipo = alerta.Tipo,
-                Mensaje = alerta.Mensaje,
-                Fecha = alerta.Fecha,
-                ContratoId = alerta.ContratoId,
-                PolizaId = alerta.PolizaId
-            };
-            return dto;
+            var alerta = await _alertasService.GetByIdAsync(id);
+            if (alerta == null) return NotFound(new { message = "Alerta no encontrada" });
+            return Ok(alerta);
         }
 
-        [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<AlertaDto>> PostAlerta(AlertaDto dto)
+        [HttpPost]
+        public async Task<ActionResult<AlertaDto>> Create(AlertaCreateDto dto)
         {
-            var alerta = new Alerta
-            {
-                Tipo = dto.Tipo,
-                Mensaje = dto.Mensaje,
-                Fecha = dto.Fecha,
-                ContratoId = dto.ContratoId,
-                PolizaId = dto.PolizaId
-            };
-
-            _context.Alertas.Add(alerta);
-            await _context.SaveChangesAsync();
-
-            dto.Id = alerta.Id;
-            return CreatedAtAction(nameof(GetAlertas), new { id = dto.Id }, dto);
+            var alerta = await _alertasService.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id = alerta.Id }, alerta);
         }
 
-      
+        [Authorize(Roles = "Admin")]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, AlertaUpdateDto dto)
+        {
+            var updated = await _alertasService.UpdateAsync(id, dto);
+            if (!updated) return NotFound();
+            return Ok(new { message = "Alerta actualizada correctamente" });
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var deleted = await _alertasService.DeleteAsync(id);
+            if (!deleted) return NotFound();
+            return Ok(new { message = "Alerta eliminada correctamente" });
+        }
     }
 }

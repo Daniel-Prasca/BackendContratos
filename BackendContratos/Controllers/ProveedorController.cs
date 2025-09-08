@@ -1,112 +1,62 @@
-﻿using BackendContratos.Data;
-using BackendContratos.Dtos;
-using BackendContratos.Models;
+﻿using BackendContratos.Dtos;
+using BackendContratos.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace BackendContratos.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize] // 👈 asegura que todos los métodos requieren un usuario autenticado
+    [Authorize]
     public class ProveedoresController : ControllerBase
     {
-        private readonly BackendContratoDbContext _context;
+        private readonly IProveedoresService _service;
 
-        public ProveedoresController(BackendContratoDbContext context)
+        public ProveedoresController(IProveedoresService service)
         {
-            _context = context;
+            _service = service;
         }
 
-        // GET api/proveedores
         [HttpGet]
-        public async Task<IActionResult> GetProveedores()
+        public async Task<IActionResult> Get()
         {
-            var proveedores = await _context.Proveedores
-                .Select(p => new ProveedorDto
-                {
-                    Id = p.Id,
-                    Nit = p.Nit,
-                    Nombre = p.Nombre,
-                    RepresentanteLegal = p.RepresentanteLegal
-                })
-                .ToListAsync();
-
+            var proveedores = await _service.GetAllAsync();
             return Ok(proveedores);
         }
 
-        // GET api/proveedores/{id}
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetProveedor(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var proveedor = await _context.Proveedores.FindAsync(id);
-
-            if (proveedor == null)
-                return NotFound();
-
-            var dto = new ProveedorDto
-            {
-                Id = proveedor.Id,
-                Nit = proveedor.Nit,
-                Nombre = proveedor.Nombre,
-                RepresentanteLegal = proveedor.RepresentanteLegal
-            };
-
-            return Ok(dto);
+            var proveedor = await _service.GetByIdAsync(id);
+            if (proveedor == null) return NotFound();
+            return Ok(proveedor);
         }
 
-        // POST api/proveedores
         [HttpPost]
-        [Authorize(Roles = "Admin")] // solo Admin puede crear
-        public async Task<IActionResult> CreateProveedor([FromBody] ProveedorDto request)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Post([FromBody] ProveedorCreateDto dto)
         {
-            var proveedor = new Proveedor
-            {
-                Nit = request.Nit,
-                Nombre = request.Nombre,
-                RepresentanteLegal = request.RepresentanteLegal
-            };
-
-            _context.Proveedores.Add(proveedor);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { message = "Proveedor creado exitosamente" });
+            var created = await _service.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id = created.Id }, created);
         }
 
-        // PUT api/proveedores/{id}
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")] // solo Admin puede editar
-        public async Task<IActionResult> UpdateProveedor(int id, [FromBody] ProveedorDto request)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Put(int id, [FromBody] ProveedorUpdateDto dto)
         {
-            var proveedor = await _context.Proveedores.FindAsync(id);
-
-            if (proveedor == null)
-                return NotFound();
-
-            proveedor.Nit = request.Nit;
-            proveedor.Nombre = request.Nombre;
-            proveedor.RepresentanteLegal = request.RepresentanteLegal;
-
-            await _context.SaveChangesAsync();
-
-            return Ok(new { message = "Proveedor actualizado exitosamente" });
+            var success = await _service.UpdateAsync(id, dto);
+            if (!success) return NotFound();
+            return Ok(new {message = "Proveedor actulizado correctamente"});
         }
 
-        // DELETE api/proveedores/{id}
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")] //  solo Admin puede eliminar
-        public async Task<IActionResult> DeleteProveedor(int id)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(int id)
         {
-            var proveedor = await _context.Proveedores.FindAsync(id);
-
-            if (proveedor == null)
-                return NotFound();
-
-            _context.Proveedores.Remove(proveedor);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { message = "Proveedor eliminado exitosamente" });
+            var success = await _service.DeleteAsync(id);
+            if (!success) return NotFound();
+            return Ok(new {mensagge = "Proveedor eliminado correctamente"});
         }
     }
 }

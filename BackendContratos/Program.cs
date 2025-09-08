@@ -2,6 +2,9 @@ using BackendContratos.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using BackendContratos.Services.Interfaces;
+using BackendContratos.Services.Implementations;
+using BackendContratos.Services;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,11 +47,42 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:4200")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+                      });
+});
+
+
+
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
+builder.Services.AddScoped<IProveedoresService, ProveedoresService>();
+builder.Services.AddScoped<ContratosService>();
+builder.Services.AddScoped<ServiciosService>();
+builder.Services.AddScoped<LiquidacionesService>();
+builder.Services.AddScoped<PolizasService>();
+builder.Services.AddScoped<UsersService>();
+builder.Services.AddScoped<AlertasService>();
+builder.Services.AddScoped<AuthServices>();
+
+
+
 
 
 var app = builder.Build();
+
+
+// Luego en pipeline HTTP
+app.UseCors(MyAllowSpecificOrigins);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

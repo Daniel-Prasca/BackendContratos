@@ -1,9 +1,8 @@
-﻿using BackendContratos.Data;
-using BackendContratos.Dtos;
-using BackendContratos.Models;
+﻿using BackendContratos.Dtos;
+using BackendContratos.DTOs;
+using BackendContratos.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BackendContratos.Controllers
 {
@@ -12,111 +11,59 @@ namespace BackendContratos.Controllers
     [Authorize]
     public class LiquidacionesController : ControllerBase
     {
-        private readonly BackendContratoDbContext _context;
-        public LiquidacionesController(BackendContratoDbContext context) => _context = context;
+        private readonly LiquidacionesService _liquidacionesService;
+
+        public LiquidacionesController(LiquidacionesService liquidacionesService)
+        {
+            _liquidacionesService = liquidacionesService;
+        }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<LiquidacionDto>>> GetLiquidaciones()
+        public async Task<ActionResult<IEnumerable<LiquidacionDto>>> GetAll()
         {
-            return await _context.Liquidaciones
-                .Select(l => new LiquidacionDto
-                {
-                    Id = l.Id,
-                    ContratoId = l.ContratoId,
-                    ServicioId = l.ServicioId,
-                    UsuarioId = l.UsuarioId,
-                    Cantidad = l.Cantidad,
-                    Total = l.Total,
-                    Estado = l.Estado,
-                    Fecha = l.Fecha
-                }).ToListAsync();
+            return Ok(await _liquidacionesService.GetAllAsync());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<LiquidacionDto>> GetLiquidacion(int id)
+        public async Task<ActionResult> GetById(int id)
         {
-            var liquidacion = await _context.Liquidaciones.FindAsync(id);
-            if (liquidacion == null)
-            {
-                return NotFound("Liquidación no encontrada.");
-            }
-            var dto = new LiquidacionDto
-            {
-                Id = liquidacion.Id,
-                ContratoId = liquidacion.ContratoId,
-                ServicioId = liquidacion.ServicioId,
-                UsuarioId = liquidacion.UsuarioId,
-                Cantidad = liquidacion.Cantidad,
-                Total = liquidacion.Total,
-                Estado = liquidacion.Estado,
-                Fecha = liquidacion.Fecha
-            };
-            return dto;
+            var liquidacion = await _liquidacionesService.GetByIdAsync(id);
+            if (liquidacion == null) return NotFound(new { message = "Liquidación no encontrada" });
+            return Ok(liquidacion);
         }
 
+        [HttpGet("usuario/{usuarioId}")]
+        public async Task<ActionResult<IEnumerable<LiquidacionDto>>> GetByUsuarioId(int usuarioId)
+        {
+            var liquidaciones = await _liquidacionesService.GetAllByUsuarioIdAsync(usuarioId);
+            return Ok(liquidaciones);
+        }
+
+
+        [Authorize(Roles = "User")]
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<LiquidacionDto>> PostLiquidacion(LiquidacionDto dto)
+        public async Task<ActionResult<LiquidacionDto>> Create(LiquidacionCreateDto dto)
         {
-            if (!await _context.Contratos.AnyAsync(c => c.Id == dto.ContratoId) ||
-                !await _context.Servicios.AnyAsync(s => s.Id == dto.ServicioId) ||
-                !await _context.Users.AnyAsync(u => u.Id == dto.UsuarioId))
-            {
-                return BadRequest("Contrato, Servicio o Usuario inválido.");
-            }
-
-            var liquidacion = new Liquidacion
-            {
-                ContratoId = dto.ContratoId,
-                ServicioId = dto.ServicioId,
-                UsuarioId = dto.UsuarioId,
-                Cantidad = dto.Cantidad,
-                Total = dto.Total,
-                Estado = dto.Estado,
-                Fecha = dto.Fecha
-            };
-
-            _context.Liquidaciones.Add(liquidacion);
-            await _context.SaveChangesAsync();
-
-            dto.Id = liquidacion.Id;
-            return CreatedAtAction(nameof(GetLiquidaciones), new { id = dto.Id }, dto);
-
+            var liquidacion = await _liquidacionesService.CreateAsync(dto);
+            return CreatedAtAction(nameof(GetById), new { id = liquidacion.Id }, liquidacion);
         }
 
+        [Authorize(Roles = "User, Admin")]
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> PutLiquidacion(int id,[FromBody] LiquidacionDto dto)
+        public async Task<IActionResult> Update(int id, LiquidacionUpdateDto dto)
         {
-           var liquidacion = await _context.Liquidaciones.FindAsync(id);
-              if (liquidacion == null)
-              {
-                return NotFound("Liquidación no encontrada.");
-              }
-                liquidacion.ContratoId = dto.ContratoId;
-                liquidacion.ServicioId = dto.ServicioId;
-                liquidacion.UsuarioId = dto.UsuarioId;
-                liquidacion.Cantidad = dto.Cantidad;
-                liquidacion.Total = dto.Total;
-                liquidacion.Estado = dto.Estado;
-                liquidacion.Fecha = dto.Fecha;
-                await _context.SaveChangesAsync();
-                return Ok(new { message = "Liquidación actualizada exitosamente" });
-
+            var updated = await _liquidacionesService.UpdateAsync(id, dto);
+            if (!updated) return NotFound();
+            return Ok(new { message = "Liquidación actualizada correctamente" });
         }
 
+        [Authorize(Roles = "Admin, User")]
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> DeleteLiquidacion(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var liquidacion = await _context.Liquidaciones.FindAsync(id);
-            if (liquidacion == null)
-            {
-                return NotFound("Liquidación no encontrada.");
-            }
-            _context.Liquidaciones.Remove(liquidacion);
-            await _context.SaveChangesAsync();
-            return Ok(new { message = "Liquidación eliminada exitosamente" });
+            var deleted = await _liquidacionesService.DeleteAsync(id);
+            if (!deleted) return NotFound();
+            return Ok(new { message = "Liquidación eliminada correctamente" });
         }
     }
 }
