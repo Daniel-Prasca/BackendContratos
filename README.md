@@ -26,7 +26,7 @@ _Para poder inicializar el sistema se requiere lo siguiente :_
 > [!WARNING]
 > Para manejar este propyecto debes tener instalado Docker y GitHub en tu PC
 > Instalación de Git
->  [Descargar Git](https://git-scm.com/downloads)
+> [Descargar Git](https://git-scm.com/downloads)
 >**Docker**  
 > Para levantar los contenedores del backend.  
 >[Descargar Docker](https://www.docker.com/get-started/)
