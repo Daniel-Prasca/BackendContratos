@@ -38,7 +38,7 @@ _Para poder inicializar el sistema se requiere lo siguiente :_
 git clone https://github.com/Daniel-Prasca/BackendContratos.git
 ```
 ```
-cd BackendContratos
+cd BackendContratos/BackendContratos
 ```
 ### Correr la App 🚀
 > [!NOTE]
