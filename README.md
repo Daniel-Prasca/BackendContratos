@@ -7,8 +7,11 @@ _Sistema desarrollado por Daniel Prasca
 </div>
 
 <p align="center">
-<a href="https://angular.dev"><img src="[https://imgs.search.brave.com/Xkj8HMVUoD9qKnH36MGpNEiLymxzP-sNmIj9bB7M6t0/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9zZWVr/bG9nby5jb20vaW1h/Z2VzL0EvYW5ndWxh/ci1sb2dvLTcwQkJF/MjIwQ0Itc2Vla2xv/Z28uY29tLnBuZw](https://upload.wikimedia.org/wikipedia/commons/7/7d/Microsoft_.NET_logo.svg)" width="400" alt="Angular Logo" /></a>
+  <a href="https://angular.dev">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Microsoft_.NET_logo.svg" width="400" alt=".NET LOGO" />
+  </a>
 </p>
+
 
 ### Pre-requisitos 📋
 
