@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Text;
 
 namespace BackendContratos.Services
@@ -26,22 +25,14 @@ namespace BackendContratos.Services
             return await _context.Users.AnyAsync(u => u.Email == email);
         }
 
-        public string HashPassword(string password)
-        {
-            using var sha256 = SHA256.Create();
-            return Convert.ToBase64String(
-                sha256.ComputeHash(Encoding.UTF8.GetBytes(password))
-            );
-        }
 
         public async Task RegisterAsync(UserRegisterDto dto)
         {
-            var hashedPassword = HashPassword(dto.Password);
             var user = new User
             {
                 Nombre = dto.Nombre,
                 Email = dto.Email,
-                PasswordHash = hashedPassword,
+                Password = dto.Password, // Guardar directamente el texto plano
                 Role = dto.Role
             };
             _context.Users.Add(user);
@@ -53,8 +44,8 @@ namespace BackendContratos.Services
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
             if (user == null) return (string.Empty, null);
 
-            var hashedPassword = HashPassword(dto.Password);
-            if (user.PasswordHash != hashedPassword) return (string.Empty, null);
+            // Comparar directamente en texto plano
+            if (user.Password != dto.Password) return (string.Empty, null);
 
             var token = GenerateJwtToken(user);
             return (token, user);
@@ -78,6 +69,20 @@ namespace BackendContratos.Services
                 signingCredentials: creds
             );
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public async Task SeedUsersAsync()
+        {
+            if (!await _context.Users.AnyAsync())
+            {
+                var users = new List<User>
+                {
+                    new User { Nombre = "Administrador", Email = "admin@contratos.com", Password = "12345", Role = "Admin" },
+                    new User { Nombre = "Usuario Demo", Email = "usuario@contratos.com", Password = "12345", Role = "User" }
+                };
+                _context.Users.AddRange(users);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

@@ -20,16 +20,13 @@ namespace BackendContratos.Services
         // 🔑 Registrar usuario
         public async Task<UserDto> RegisterAsync(UserRegisterDto dto)
         {
-            using var sha256 = SHA256.Create();
-            var hashedPassword = Convert.ToBase64String(
-                sha256.ComputeHash(Encoding.UTF8.GetBytes(dto.Password))
-            );
+            
 
             var user = new User
             {
                 Nombre = dto.Nombre,
                 Email = dto.Email,
-                PasswordHash = hashedPassword,
+                Password = dto.Password,
                 Role = dto.Role
             };
 
@@ -54,7 +51,7 @@ namespace BackendContratos.Services
             );
 
             return await _context.Users
-                .FirstOrDefaultAsync(u => u.Email == dto.Email && u.PasswordHash == hashedPassword);
+                .FirstOrDefaultAsync(u => u.Email == dto.Email && u.Password == hashedPassword);
         }
 
         // Listar usuarios

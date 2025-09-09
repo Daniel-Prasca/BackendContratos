@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  api:
+    build: .
+    container_name: backend_contratos_api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db;Database=BackendContratos;User=sa;Password=Your_strong_password123;TrustServerCertificate=True;
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: contratos_sqlserver
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Your_strong_password123
+    volumes:
+      - sql_data:/var/opt/mssql
+
+volumes:
+  sql_data:

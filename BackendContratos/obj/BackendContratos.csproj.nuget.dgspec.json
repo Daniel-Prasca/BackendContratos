@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\BackendContratos.csproj": {}
+    "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\BackendContratos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\BackendContratos.csproj": {
+    "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\BackendContratos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\BackendContratos.csproj",
+        "projectUniqueName": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\BackendContratos.csproj",
         "projectName": "BackendContratos",
-        "projectPath": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\BackendContratos.csproj",
+        "projectPath": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\BackendContratos.csproj",
         "packagesPath": "C:\\Users\\dpras\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\obj\\",
+        "outputPath": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

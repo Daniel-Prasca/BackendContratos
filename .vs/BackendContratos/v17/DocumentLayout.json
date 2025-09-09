@@ -1,38 +1,50 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\",
+  "WorkspaceRootPath": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\backendcontratos\\backendcontratos\\controllers\\servicioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\contratos-app\\backendcontratos\\backendcontratos\\services\\implementations\\authservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\services\\implementations\\authservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\contratos-app\\backendcontratos\\backendcontratos\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\contratos-app\\backendcontratos\\backendcontratos\\migrations\\20250909000437_migration1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\migrations\\20250909000437_migration1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\contratos-app\\backendcontratos\\backendcontratos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\contratos-app\\backendcontratos\\backendcontratos\\services\\implementations\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\services\\implementations\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\contratos-app\\backendcontratos\\backendcontratos\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\contratos-app\\backendcontratos\\backendcontratos\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\contratos-app\\backendcontratos\\backendcontratos\\data\\backendcontratodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\data\\backendcontratodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\contratos-app\\backendcontratos\\backendcontratos\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\contratos-app\\backendcontratos\\backendcontratos\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\contratos-app\\backendcontratos\\backendcontratos\\controllers\\servicioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\controllers\\servicioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\backendcontratos\\backendcontratos\\migrations\\20250906163309_migracion 1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\migrations\\20250906163309_migracion 1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\backendcontratos\\backendcontratos\\services\\implementations\\liquidacionservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\services\\implementations\\liquidacionservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\backendcontratos\\backendcontratos\\backendcontratos.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\backendcontratos.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\backendcontratos\\backendcontratos\\dtos\\liquidaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\dtos\\liquidaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\backendcontratos\\backendcontratos\\dtos\\polizadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\dtos\\polizadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\backendcontratos\\backendcontratos\\controllers\\polizascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\controllers\\polizascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|c:\\users\\dpras\\onedrive\\documentos\\git\\backendcontratos\\backendcontratos\\services\\implementations\\serviciosservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3E16EE4-0CC6-44E7-9EBA-6CDC6F11646D}|BackendContratos\\BackendContratos.csproj|solutionrelative:backendcontratos\\services\\implementations\\serviciosservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,101 +62,138 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "20250906163309_migracion 1.cs",
-              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\Migrations\\20250906163309_migracion 1.cs",
-              "RelativeDocumentMoniker": "BackendContratos\\Migrations\\20250906163309_migracion 1.cs",
-              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\Migrations\\20250906163309_migracion 1.cs",
-              "RelativeToolTip": "BackendContratos\\Migrations\\20250906163309_migracion 1.cs",
-              "ViewState": "AgIAAGcAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "20250909000437_Migration1.cs",
+              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Migrations\\20250909000437_Migration1.cs",
+              "RelativeDocumentMoniker": "BackendContratos\\Migrations\\20250909000437_Migration1.cs",
+              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Migrations\\20250909000437_Migration1.cs",
+              "RelativeToolTip": "BackendContratos\\Migrations\\20250909000437_Migration1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T16:51:58.799Z",
+              "WhenOpened": "2025-09-09T00:04:39.078Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ServiciosController.cs",
-              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\Controllers\\ServiciosController.cs",
-              "RelativeDocumentMoniker": "BackendContratos\\Controllers\\ServiciosController.cs",
-              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\Controllers\\ServiciosController.cs",
-              "RelativeToolTip": "BackendContratos\\Controllers\\ServiciosController.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAwwDEAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "UserServices.cs",
+              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Services\\Implementations\\UserServices.cs",
+              "RelativeDocumentMoniker": "BackendContratos\\Services\\Implementations\\UserServices.cs",
+              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Services\\Implementations\\UserServices.cs",
+              "RelativeToolTip": "BackendContratos\\Services\\Implementations\\UserServices.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAmwDUAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T16:41:48.206Z",
+              "WhenOpened": "2025-09-08T23:49:53.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthServices.cs",
+              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Services\\Implementations\\AuthServices.cs",
+              "RelativeDocumentMoniker": "BackendContratos\\Services\\Implementations\\AuthServices.cs",
+              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Services\\Implementations\\AuthServices.cs",
+              "RelativeToolTip": "BackendContratos\\Services\\Implementations\\AuthServices.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAmwBIAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-08T23:38:10.265Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "BackendContratos.http",
-              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\BackendContratos.http",
-              "RelativeDocumentMoniker": "BackendContratos\\BackendContratos.http",
-              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\BackendContratos.http",
-              "RelativeToolTip": "BackendContratos\\BackendContratos.http",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2025-09-08T14:47:18.986Z"
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Program.cs",
+              "RelativeDocumentMoniker": "BackendContratos\\Program.cs",
+              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Program.cs",
+              "RelativeToolTip": "BackendContratos\\Program.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAEkAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-08T17:43:54.711Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PolizasController.cs",
-              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\Controllers\\PolizasController.cs",
-              "RelativeDocumentMoniker": "BackendContratos\\Controllers\\PolizasController.cs",
-              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\Controllers\\PolizasController.cs",
-              "RelativeToolTip": "BackendContratos\\Controllers\\PolizasController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T04:38:39.898Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LiquidacionDto.cs",
-              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\Dtos\\LiquidacionDto.cs",
-              "RelativeDocumentMoniker": "BackendContratos\\Dtos\\LiquidacionDto.cs",
-              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\Dtos\\LiquidacionDto.cs",
-              "RelativeToolTip": "BackendContratos\\Dtos\\LiquidacionDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T21:54:32.709Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LiquidacionServices.cs",
-              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\Services\\Implementations\\LiquidacionServices.cs",
-              "RelativeDocumentMoniker": "BackendContratos\\Services\\Implementations\\LiquidacionServices.cs",
-              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\Services\\Implementations\\LiquidacionServices.cs",
-              "RelativeToolTip": "BackendContratos\\Services\\Implementations\\LiquidacionServices.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAwwFkAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T21:34:41.234Z"
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\appsettings.json",
+              "RelativeDocumentMoniker": "BackendContratos\\appsettings.json",
+              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\appsettings.json",
+              "RelativeToolTip": "BackendContratos\\appsettings.json",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-08T19:45:37.277Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "PolizaDto.cs",
-              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\Dtos\\PolizaDto.cs",
-              "RelativeDocumentMoniker": "BackendContratos\\Dtos\\PolizaDto.cs",
-              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\Dtos\\PolizaDto.cs",
-              "RelativeToolTip": "BackendContratos\\Dtos\\PolizaDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA6AAAAAAAAAA==",
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Dtos\\UserDto.cs",
+              "RelativeDocumentMoniker": "BackendContratos\\Dtos\\UserDto.cs",
+              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Dtos\\UserDto.cs",
+              "RelativeToolTip": "BackendContratos\\Dtos\\UserDto.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAA1wBAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-08T04:43:08.119Z"
+              "WhenOpened": "2025-09-08T23:43:46.921Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "ServiciosServices.cs",
-              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\Services\\Implementations\\ServiciosServices.cs",
-              "RelativeDocumentMoniker": "BackendContratos\\Services\\Implementations\\ServiciosServices.cs",
-              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\BackendContratos\\BackendContratos\\Services\\Implementations\\ServiciosServices.cs",
-              "RelativeToolTip": "BackendContratos\\Services\\Implementations\\ServiciosServices.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAowFcAAAAvAAAAAAAAAA==",
+              "Title": "BackendContratoDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Data\\BackendContratoDbContext.cs",
+              "RelativeDocumentMoniker": "BackendContratos\\Data\\BackendContratoDbContext.cs",
+              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Data\\BackendContratoDbContext.cs",
+              "RelativeToolTip": "BackendContratos\\Data\\BackendContratoDbContext.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAUwC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-07T20:29:12.433Z"
+              "WhenOpened": "2025-09-08T19:49:19.549Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Models\\User.cs",
+              "RelativeDocumentMoniker": "BackendContratos\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Models\\User.cs",
+              "RelativeToolTip": "BackendContratos\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-08T19:50:55.565Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "docker-compose.yml",
+              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\docker-compose.yml",
+              "RelativeDocumentMoniker": "BackendContratos\\docker-compose.yml",
+              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\docker-compose.yml",
+              "RelativeToolTip": "BackendContratos\\docker-compose.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAwBIAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-09-08T17:30:59.856Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Dockerfile",
+              "RelativeDocumentMoniker": "BackendContratos\\Dockerfile",
+              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Dockerfile",
+              "RelativeToolTip": "BackendContratos\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-09-08T17:24:08.517Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ServiciosController.cs",
+              "DocumentMoniker": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Controllers\\ServiciosController.cs",
+              "RelativeDocumentMoniker": "BackendContratos\\Controllers\\ServiciosController.cs",
+              "ToolTip": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\Controllers\\ServiciosController.cs",
+              "RelativeToolTip": "BackendContratos\\Controllers\\ServiciosController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAwwDEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-08T16:41:48.206Z"
             }
           ]
         }
