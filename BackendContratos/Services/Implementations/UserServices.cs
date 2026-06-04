@@ -1,6 +1,5 @@
 ﻿using BackendContratos.Data;
 using BackendContratos.Dtos;
-using BackendContratos.DTOs;
 using BackendContratos.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
@@ -17,16 +16,19 @@ namespace BackendContratos.Services
             _context = context;
         }
 
-        // 🔑 Registrar usuario
+        private static string HashPassword(string password)
+        {
+            using var sha256 = SHA256.Create();
+            return Convert.ToBase64String(sha256.ComputeHash(Encoding.UTF8.GetBytes(password)));
+        }
+
         public async Task<UserDto> RegisterAsync(UserRegisterDto dto)
         {
-            
-
             var user = new User
             {
                 Nombre = dto.Nombre,
                 Email = dto.Email,
-                Password = dto.Password,
+                Password = HashPassword(dto.Password),
                 Role = dto.Role
             };
 
@@ -42,14 +44,9 @@ namespace BackendContratos.Services
             };
         }
 
-        // 🔑 Login
         public async Task<User?> AuthenticateAsync(UserLoginDto dto)
         {
-            using var sha256 = SHA256.Create();
-            var hashedPassword = Convert.ToBase64String(
-                sha256.ComputeHash(Encoding.UTF8.GetBytes(dto.Password))
-            );
-
+            var hashedPassword = HashPassword(dto.Password);
             return await _context.Users
                 .FirstOrDefaultAsync(u => u.Email == dto.Email && u.Password == hashedPassword);
         }

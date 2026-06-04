@@ -1,5 +1,4 @@
 ﻿using BackendContratos.Dtos;
-using BackendContratos.DTOs;
 using BackendContratos.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +28,7 @@ namespace BackendContratos.Controllers
         public async Task<ActionResult> GetById(int id)
         {
             var contrato = await _contratosService.GetByIdAsync(id);
-            if (contrato == null) return NotFound(new {mesagge = "Contrato no encontrado"});
+            if (contrato == null) return NotFound(new { message = "Contrato no encontrado" });
             return Ok(contrato);
         }
 
@@ -49,7 +48,7 @@ namespace BackendContratos.Controllers
         {
             var updated = await _contratosService.UpdateAsync(id, dto);
             if (!updated) return NotFound();
-            return Ok(new {mensagge = "Contrato actualizado correctamente"});
+            return Ok(new { message = "Contrato actualizado correctamente" });
         }
 
         //Eliminar (sólo Admin)
@@ -59,7 +58,7 @@ namespace BackendContratos.Controllers
         {
             var deleted = await _contratosService.DeleteAsync(id);
             if (!deleted) return NotFound();
-            return Ok(new { mensagge = "Contrato eliminado correctamente" });
+            return Ok(new { message = "Contrato eliminado correctamente" });
         }
     }
 }

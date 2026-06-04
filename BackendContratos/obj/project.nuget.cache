@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EfsDfThgkpo=",
+  "dgSpecHash": "B/FSCVr+I0w=",
   "success": true,
   "projectFilePath": "C:\\Users\\dpras\\OneDrive\\Documentos\\git\\contratos-app\\BackendContratos\\BackendContratos\\BackendContratos.csproj",
   "expectedPackageFiles": [
@@ -23,6 +23,7 @@
     "C:\\Users\\dpras\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.8\\microsoft.entityframeworkcore.abstractions.9.0.8.nupkg.sha512",
     "C:\\Users\\dpras\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.8\\microsoft.entityframeworkcore.analyzers.9.0.8.nupkg.sha512",
     "C:\\Users\\dpras\\.nuget\\packages\\microsoft.entityframeworkcore.design\\9.0.8\\microsoft.entityframeworkcore.design.9.0.8.nupkg.sha512",
+    "C:\\Users\\dpras\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\9.0.8\\microsoft.entityframeworkcore.inmemory.9.0.8.nupkg.sha512",
     "C:\\Users\\dpras\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\9.0.8\\microsoft.entityframeworkcore.relational.9.0.8.nupkg.sha512",
     "C:\\Users\\dpras\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\9.0.8\\microsoft.entityframeworkcore.sqlserver.9.0.8.nupkg.sha512",
     "C:\\Users\\dpras\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\9.0.8\\microsoft.entityframeworkcore.tools.9.0.8.nupkg.sha512",

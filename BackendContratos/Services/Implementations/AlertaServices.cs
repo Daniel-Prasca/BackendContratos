@@ -1,6 +1,5 @@
 ﻿using BackendContratos.Data;
 using BackendContratos.Dtos;
-using BackendContratos.DTOs;
 using BackendContratos.Models;
 using Microsoft.EntityFrameworkCore;
 

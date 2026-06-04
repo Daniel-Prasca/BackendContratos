@@ -47,7 +47,7 @@ namespace BackendContratos.Controllers
         {
             var success = await _service.UpdateAsync(id, dto);
             if (!success) return NotFound();
-            return Ok(new {message = "Proveedor actulizado correctamente"});
+            return Ok(new { message = "Proveedor actualizado correctamente" });
         }
 
         [HttpDelete("{id}")]
@@ -56,7 +56,7 @@ namespace BackendContratos.Controllers
         {
             var success = await _service.DeleteAsync(id);
             if (!success) return NotFound();
-            return Ok(new {mensagge = "Proveedor eliminado correctamente"});
+            return Ok(new { message = "Proveedor eliminado correctamente" });
         }
     }
 }

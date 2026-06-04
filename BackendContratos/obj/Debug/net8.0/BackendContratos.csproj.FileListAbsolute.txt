@@ -339,10 +339,10 @@ C:\Users\dpras\OneDrive\Documentos\git\contratos-app\BackendContratos\BackendCon
 C:\Users\dpras\OneDrive\Documentos\git\contratos-app\BackendContratos\BackendContratos\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\dpras\OneDrive\Documentos\git\contratos-app\BackendContratos\BackendContratos\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\dpras\OneDrive\Documentos\git\contratos-app\BackendContratos\BackendContratos\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\dpras\OneDrive\Documentos\git\contratos-app\BackendContratos\BackendContratos\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\dpras\OneDrive\Documentos\git\contratos-app\BackendContratos\BackendContratos\obj\Debug\net8.0\BackendC.C8443EC2.Up2Date
 C:\Users\dpras\OneDrive\Documentos\git\contratos-app\BackendContratos\BackendContratos\obj\Debug\net8.0\BackendContratos.dll
 C:\Users\dpras\OneDrive\Documentos\git\contratos-app\BackendContratos\BackendContratos\obj\Debug\net8.0\refint\BackendContratos.dll
 C:\Users\dpras\OneDrive\Documentos\git\contratos-app\BackendContratos\BackendContratos\obj\Debug\net8.0\BackendContratos.pdb
 C:\Users\dpras\OneDrive\Documentos\git\contratos-app\BackendContratos\BackendContratos\obj\Debug\net8.0\BackendContratos.genruntimeconfig.cache
 C:\Users\dpras\OneDrive\Documentos\git\contratos-app\BackendContratos\BackendContratos\obj\Debug\net8.0\ref\BackendContratos.dll
+C:\Users\dpras\OneDrive\Documentos\git\contratos-app\BackendContratos\BackendContratos\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.InMemory.dll

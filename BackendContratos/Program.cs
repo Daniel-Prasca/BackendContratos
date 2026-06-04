@@ -1,10 +1,10 @@
 using BackendContratos.Data;
+using BackendContratos.Middleware;
 using BackendContratos.Services;
 using BackendContratos.Services.Implementations;
 using BackendContratos.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -15,10 +15,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Conexion a la base de datos
-builder.Services.AddDbContext<BackendContratoDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+if (builder.Environment.IsEnvironment("Testing"))
+{
+    var testDbName = "TestDb_" + Guid.NewGuid().ToString();
+    builder.Services.AddDbContext<BackendContratoDbContext>(options =>
+        options.UseInMemoryDatabase(testDbName));
+}
+else
+    builder.Services.AddDbContext<BackendContratoDbContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Configurar autenticación JWT
+// Configurar autenticaciï¿½n JWT
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);
 
@@ -53,19 +60,6 @@ builder.Services.AddCors(options =>
         });
 });
 
-
-
-// Registrar servicio CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAngularApp", builder =>
-    {
-        builder.WithOrigins("http://localhost:4200")  // Origen permitido (frontend Angular)
-               .AllowAnyHeader()                     // Permitir cualquier header en la petición
-               .AllowAnyMethod();                    // Permitir cualquier método HTTP (GET, POST, etc.)
-    });
-});
-
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
 
@@ -81,11 +75,14 @@ builder.Services.AddScoped<AuthServices>();
 
 var app = builder.Build();
 
-// Aplicar migraciones automáticamente al arrancar
+// Aplicar migraciones automï¿½ticamente al arrancar
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<BackendContratoDbContext>();
-    db.Database.Migrate(); 
+    if (db.Database.IsRelational())
+        db.Database.Migrate();
+    else
+        db.Database.EnsureCreated();
 }
 
 using (var scope = app.Services.CreateScope())
@@ -94,6 +91,8 @@ using (var scope = app.Services.CreateScope())
     await authService.SeedUsersAsync();
 }
 
+
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 // CORS
 app.UseCors(MyAllowSpecificOrigins);
@@ -112,3 +111,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }
