@@ -1,0 +1,54 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+    branches:
+      include:
+        - main
+
+  pool:
+    vmImage: 'windows-latest'
+
+  variables:
+    buildConfiguration: 'Release'
+
+  stages:
+    - stage: Build
+      displayName: Build
+      jobs:
+        - job: Build
+          steps:
+            - task: UseDotNet@2
+              inputs:
+                version: '8.x'
+
+            - script: dotnet restore
+              displayName: Restore
+
+            - script: dotnet build --configuration $(buildConfiguration) --no-restore
+              displayName: Build
+
+    - stage: Test
+      displayName: Test
+      dependsOn: Build
+      jobs:
+        - job: Test
+          steps:
+            - task: UseDotNet@2
+              inputs:
+                version: '8.x'
+
+            - script: >
+                dotnet test BackendContratos.Tests/BackendContratos.Tests.csproj
+                --configuration $(buildConfiguration)
+                --logger trx
+                --results-directory $(Agent.TempDirectory)
+              displayName: Run Tests
+
+            - task: PublishTestResults@2
+              inputs:
+                testResultsFormat: VSTest
+                testResultsFiles: '$(Agent.TempDirectory)/**/*.trx'
+              displayName: Publish Test Results
